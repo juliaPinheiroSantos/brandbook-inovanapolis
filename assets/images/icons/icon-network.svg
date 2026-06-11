@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#15396B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Ícone de rede">
+  <circle cx="12" cy="5" r="2.4"/>
+  <circle cx="5" cy="18" r="2.4"/>
+  <circle cx="19" cy="18" r="2.4"/>
+  <path d="M12 7.4v4M10.3 16l-3.6-2M13.7 16l3.6-2"/>
+</svg>

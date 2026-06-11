@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" fill="none" aria-label="Padrão de fluxo em fundo escuro">
+  <path d="M-20 120 C80 60 160 180 320 100" stroke="#3E9D5E" stroke-width="2" opacity="0.5"/>
+  <path d="M-20 150 C100 100 180 200 320 140" stroke="#2D6CC9" stroke-width="2" opacity="0.5"/>
+  <circle cx="80" cy="92" r="5" fill="#5FC07E"/>
+  <circle cx="220" cy="128" r="5" fill="#5E8FD6"/>
+</svg>

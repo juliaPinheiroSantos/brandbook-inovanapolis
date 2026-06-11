@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" fill="none" aria-label="Padrão de nós conectados">
+  <circle cx="40" cy="50" r="6" fill="#ffffff" opacity="0.5"/>
+  <circle cx="150" cy="30" r="6" fill="#ffffff" opacity="0.5"/>
+  <circle cx="250" cy="70" r="6" fill="#ffffff" opacity="0.5"/>
+  <circle cx="90" cy="140" r="6" fill="#ffffff" opacity="0.5"/>
+  <circle cx="210" cy="160" r="6" fill="#ffffff" opacity="0.5"/>
+  <path d="M40 50 L150 30 L250 70 M150 30 L90 140 L210 160 L250 70" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+</svg>
