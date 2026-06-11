@@ -1198,8 +1198,8 @@ svg { max-width: 100%; }
   align-items: flex-start;
 }
 .hero__logo {
-  width: 100px;
-  height: 100px;
+  width: 87px;
+  height: auto;
 }
 .hero__text { min-width: 0; width: 100%; }
 .hero__headline {
@@ -1355,8 +1355,8 @@ svg { max-width: 100%; }
     gap: 48px;
   }
   .hero__logo {
-    width: 140px;
-    height: 140px;
+    width: 122px;
+    height: auto;
   }
   .hero__headline { font-size: 60px; }
   .hero__description { font-size: 18px; }
@@ -1442,7 +1442,7 @@ svg { max-width: 100%; }
   .nav__inner { padding: 13px 40px; }
 
   .hero__inner { padding: 118px 40px 104px; }
-  .hero__logo  { width: 184px; height: 184px; }
+  .hero__logo  { width: 160px; height: auto; }
   .hero__headline { font-size: 78px; }
   .hero__description { font-size: 20px; }
   .hero__content { gap: 60px; }
@@ -1483,12 +1483,12 @@ svg { max-width: 100%; }
     width: clamp(80px, 25vw, 130px) !important;
     height: auto !important;
   }
-  .logo-panel img[width="220"] {
+  .logo-panel img[width="191"] {
     width: 100%;
     height: auto;
   }
-  .logo-panel img[width="120"] {
-    width: 80px;
+  .logo-panel img[width="496"] {
+    width: 100%;
     height: auto;
   }
   .progress-mini-wrap {
