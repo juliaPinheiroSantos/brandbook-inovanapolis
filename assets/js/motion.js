@@ -17,13 +17,15 @@
 
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var BRAND = {
-    navy:  '#001A2E',
-    deep:  '#000014',
-    green: '#00E5C8',
-    greenD:'#00E5A0',
-    blue:  '#2A6F97',
-    teal:  '#00E5C8',
-    light: '#8FC5E0'
+    navy:    '#001A2E',
+    deep:    '#000014',
+    green:   '#00E5C8',
+    greenD:  '#00E5A0',
+    blue:    '#2A6F97',
+    teal:    '#00E5C8',
+    light:   '#8FC5E0',
+    magenta: '#FF2D78',
+    violet:  '#4A0072'
   };
 
   function onReady(fn) {
@@ -49,7 +51,7 @@
     var W = 0, H = 0;
     var nodes = [];
     var pulses = [];
-    var palette = [BRAND.navy, BRAND.blue, BRAND.teal, BRAND.green, BRAND.greenD, BRAND.light];
+    var palette = [BRAND.navy, BRAND.blue, BRAND.teal, BRAND.green, BRAND.greenD, BRAND.light, BRAND.magenta, BRAND.violet];
     // Parallax do cursor: alvo (tx/ty) é interpolado suavemente. Inicia no
     // centro (não em -9999) para nunca provocar "lurch"/reinício ao reentrar.
     var mouse = { x: 0, y: 0, tx: 0, ty: 0, active: false, init: false };
@@ -447,7 +449,7 @@
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = 0, H = 0, nodes = [], links = [], pulses = [];
     var raf = null, running = false, lastPulse = 0;
-    var palette = [BRAND.light, BRAND.teal, BRAND.green, BRAND.greenD, BRAND.blue];
+    var palette = [BRAND.light, BRAND.teal, BRAND.green, BRAND.greenD, BRAND.blue, BRAND.magenta, BRAND.violet];
 
     function size() {
       var r = host.getBoundingClientRect();
