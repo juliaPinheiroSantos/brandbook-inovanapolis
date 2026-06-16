@@ -9,6 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="./support.js"></script>
+  <script>
+    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('js-motion');
+    }
+  </script>
 </head>
 <body>
 <x-dc>
@@ -39,6 +44,7 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
+  <canvas class="hero__network" aria-hidden="true"></canvas>
   <div class="hero__dot-grid"></div>
   <div class="hero__inner">
     <div class="hero__eyebrow">Sistema de Identidade Visual · 2025—2030</div>
@@ -593,6 +599,7 @@
 
 <!-- ================= DASHBOARD ================= -->
 <section id="dashboard" class="dashboard">
+  <canvas class="dashboard__flow" aria-hidden="true"></canvas>
   <div class="section-inner">
     <div class="mono-label mono-label--dark">07 — Dashboard de indicadores</div>
     <h2 class="section-title section-title--light">O ecossistema em números</h2>
@@ -736,5 +743,6 @@ class Component extends DCLogic {
   }
 }
 </script>
+<script src="assets/js/motion.js" defer></script>
 </body>
 </html>

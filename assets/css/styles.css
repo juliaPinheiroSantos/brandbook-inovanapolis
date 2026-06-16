@@ -194,8 +194,8 @@ h1, h2, p { margin: 0; }
 .hero__dot-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(0,26,46,0.055) 1.4px, transparent 1.5px);
-  background-size: 30px 30px;
+  background-image: radial-gradient(circle, rgba(0,26,46,0.10) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
   mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
 }
@@ -1133,7 +1133,7 @@ h1, h2, p { margin: 0; }
   position: fixed;
   bottom: 28px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(12px);
   z-index: 200;
   background: var(--c-ink);
   color: var(--c-white);
@@ -1145,6 +1145,14 @@ h1, h2, p { margin: 0; }
   display: flex;
   align-items: center;
   gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .26s ease, transform .26s cubic-bezier(.22,.61,.36,1), visibility .26s;
+}
+.toast--show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 .toast__check { color: #00E5A0; }
 .toast__hex   { color: #9FB6D6; }
@@ -1532,4 +1540,118 @@ svg { max-width: 100%; }
   .type-scale-row span[style*="font-size:30px"] {
     font-size: 22px !important;
   }
+}
+
+/* === 19. MOTION SYSTEM === */
+
+/* --- Canvas da rede no hero --- */
+.hero__network {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0; animation: network-fade-in 1.4s ease 0.2s forwards;
+}
+.hero__dot-grid { z-index: 0; will-change: transform; }
+.hero__inner    { z-index: 2; will-change: transform, opacity; }
+@keyframes network-fade-in { to { opacity: 1; } }
+
+/* --- Respiração + hover da logo --- */
+.js-motion .hero__logo {
+  animation: logo-breathe 6.5s ease-in-out infinite;
+  transition: filter .4s ease;
+}
+.js-motion .hero__logo:hover {
+  filter: drop-shadow(0 18px 40px rgba(0,26,46,0.28));
+}
+@keyframes logo-breathe {
+  0%, 100% { filter: drop-shadow(0 14px 32px rgba(0,0,20,0.12)); }
+  50%       { transform: scale(1.018); filter: drop-shadow(0 20px 44px rgba(0,26,46,0.20)); }
+}
+
+/* --- Barra de progresso de scroll --- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+  z-index: 100; transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--c-navy), var(--c-blue) 45%, var(--c-green));
+  will-change: transform;
+}
+
+/* --- Nav condensa ao rolar --- */
+.nav { transition: padding .25s ease, background .25s ease, box-shadow .25s ease; }
+.nav--scrolled {
+  background: rgba(238,249,255,0.92);
+  box-shadow: 0 1px 0 var(--c-border), 0 8px 30px rgba(0,0,20,0.06);
+}
+.nav--scrolled .nav__inner { padding-top: 9px; padding-bottom: 9px; }
+
+/* --- Scroll reveal --- */
+.js-motion [data-reveal] {
+  opacity: 0; transform: translateY(22px);
+  transition:
+    opacity .7s cubic-bezier(.22,.61,.36,1) var(--reveal-delay, 0ms),
+    transform .7s cubic-bezier(.22,.61,.36,1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.js-motion [data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* --- Canvas de fluxo no dashboard --- */
+.dashboard { position: relative; }
+.dashboard__flow {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0; animation: network-fade-in 1.6s ease 0.3s forwards;
+}
+.dashboard .section-inner { position: relative; z-index: 1; }
+
+/* --- Data viz --- */
+.bar-col__bar { will-change: height; }
+.donut.donut--animate {
+  -webkit-mask: conic-gradient(#000 var(--donut-sweep, 360deg), transparent 0);
+          mask: conic-gradient(#000 var(--donut-sweep, 360deg), transparent 0);
+  transition: -webkit-mask .9s cubic-bezier(.22,.61,.36,1), mask .9s cubic-bezier(.22,.61,.36,1);
+}
+
+/* --- Hover premium nos cards --- */
+.js-motion .concept-card,
+.js-motion .type-card,
+.js-motion .comp-panel,
+.js-motion .kpi-card,
+.js-motion .chart-panel {
+  transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease, border-color .3s ease;
+}
+.js-motion .concept-card:hover, .js-motion .type-card:hover {
+  transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: #D3DEEC;
+}
+.js-motion .kpi-card:hover, .js-motion .chart-panel:hover {
+  transform: translateY(-3px); border-color: rgba(143,197,224,0.4);
+  box-shadow: 0 18px 40px rgba(0,0,20,0.35);
+}
+
+/* --- Pulso "Documento vivo" --- */
+.pill--green { position: relative; }
+.js-motion .pill--green::before {
+  content: ''; display: inline-block; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--c-green); margin-right: 7px;
+  vertical-align: middle; animation: live-pulse 2.4s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,229,200,0.5); opacity: 1; }
+  50%       { box-shadow: 0 0 0 5px rgba(0,229,200,0);  opacity: .65; }
+}
+
+/* --- Feedback visual ao copiar swatch --- */
+.color-swatch, .neutral-swatch, .mini-swatch { outline: 0 solid transparent; }
+.color-swatch.is-copied,
+.neutral-swatch.is-copied,
+.mini-swatch.is-copied {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 1px;
+  transition: outline-color .2s ease;
+}
+
+/* --- prefers-reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__network, .dashboard__flow { display: none; }
+  .js-motion [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .js-motion .hero__logo { animation: none; }
+  .js-motion .pill--green::before { animation: none; }
+  .scroll-progress { display: none; }
+  * { scroll-behavior: auto !important; }
 }
