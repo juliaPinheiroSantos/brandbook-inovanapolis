@@ -37,9 +37,9 @@
   --c-bg-subtle:   #F8FAFD;
 
   /* Tipografia */
-  --font-display:  'Sora', sans-serif;
-  --font-body:     'Manrope', sans-serif;
-  --font-mono:     'IBM Plex Mono', monospace;
+  --font-display:  'Inter', system-ui, sans-serif;
+  --font-body:     'Inter', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
 
   /* Raios de borda */
   --r-sm:   4px;
@@ -1002,6 +1002,7 @@ h1, h2, p { margin: 0; }
   font-weight: 800;
   font-size: 42px;
   line-height: 1;
+  letter-spacing: -0.02em;
   margin-top: 14px;
   color: var(--c-white);
 }
@@ -1066,7 +1067,7 @@ h1, h2, p { margin: 0; }
   justify-content: center;
   flex-direction: column;
 }
-.donut__hole-value { font-family: var(--font-display); font-weight: 800; font-size: 24px; color: var(--c-white); }
+.donut__hole-value { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -0.02em; color: var(--c-white); }
 .donut__hole-label { font-family: var(--font-mono); font-size: 9px; color: #7E9AC0; }
 
 .donut-legend { display: flex; flex-direction: column; gap: 11px; font-size: 13px; }
