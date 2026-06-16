@@ -9,15 +9,17 @@
   --c-navy:        #001A2E;
   --c-navy-deep:   #000014;
   --c-green:       #00E5C8;
-  --c-green-deep:  #00D5A0;
+  --c-green-deep:  #00E5A0;
   --c-blue:        #2A6F97;
   --c-teal:        #00E5C8;
+  --c-magenta:     #FF2D78;
+  --c-violet:      #4A0072;
 
   /* Escala neutra */
   --c-ink:         #000014;
   --c-slate-700:   #001A2E;
   --c-slate-500:   #0A3D62;
-  --c-slate-400:   #46546C;
+  --c-slate-400:   #2A6F97;
   --c-slate-300:   #8FC5E0;
   --c-slate-200:   #C3CEDC;
   --c-slate-100:   #EEF9FF;
@@ -25,7 +27,7 @@
   --c-white:       #ffffff;
 
   /* Semânticas */
-  --c-success:     #00D5A0;
+  --c-success:     #00E5A0;
   --c-warning:     #FFB300;
   --c-error:       #FF1744;
 
@@ -468,7 +470,7 @@ h1, h2, p { margin: 0; }
 /* === 10. SEÇÃO CORES === */
 .color-primaries {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 18px;
   margin-top: 16px;
 }
@@ -714,8 +716,8 @@ h1, h2, p { margin: 0; }
 }
 .btn--secondary:hover { border-color: var(--c-navy); background: #F4F7FB; }
 
-.btn--accent { color: var(--c-white); background: var(--c-green-deep); }
-.btn--accent:hover { background: #235C40; }
+.btn--accent { color: var(--c-white); background: var(--c-magenta); }
+.btn--accent:hover { background: #cc1a60; }
 
 .btn--text {
   color: var(--c-navy);
@@ -1005,7 +1007,7 @@ h1, h2, p { margin: 0; }
 }
 .kpi-card__value-unit { font-size: 22px; font-weight: 600; color: #A9BBD4; }
 .kpi-card__delta { font-size: 13px; margin-top: 8px; font-weight: 600; }
-.kpi-card__delta--up      { color: #5FC07E; }
+.kpi-card__delta--up      { color: #00E5A0; }
 .kpi-card__delta--neutral { color: #A9BBD4; }
 
 .charts-grid {
@@ -1144,7 +1146,7 @@ h1, h2, p { margin: 0; }
   align-items: center;
   gap: 10px;
 }
-.toast__check { color: #5FC07E; }
+.toast__check { color: #00E5A0; }
 .toast__hex   { color: #9FB6D6; }
 
 /* === 18. RESPONSIVIDADE (MOBILE FIRST) ===
