@@ -1,0 +1,270 @@
+/* ============================================================
+   INOVA ANÁPOLIS — Templates para Redes Sociais
+   Estilos isolados · seção 09
+   Prefixo de escopo: sct-
+   ============================================================ */
+
+/* === GRID === */
+.sct-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+/* === CARD === */
+.sct-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-2xl);
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sct-card:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 2px;
+}
+
+.js-motion .sct-card {
+  transition: transform .3s cubic-bezier(.22,.61,.36,1),
+              box-shadow .3s ease,
+              border-color .3s ease;
+}
+
+.js-motion .sct-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 45, 120, 0.30);
+}
+
+/* === ÁREA DA IMAGEM === */
+.sct-card__img-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: var(--sct-color, var(--c-paper));
+  background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.2px, transparent 1.3px);
+  background-size: 18px 18px;
+  overflow: hidden;
+}
+
+.sct-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.js-motion .sct-card:hover .sct-card__img {
+  transform: scale(1.04);
+}
+
+/* Hint de expandir ao hover */
+.sct-card__expand {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 20, 0.40);
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity .22s ease;
+  pointer-events: none;
+}
+
+.sct-card:hover .sct-card__expand {
+  opacity: 1;
+}
+
+.sct-card__expand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* === RODAPÉ DO CARD === */
+.sct-card__info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-top: 1px solid var(--c-border-light);
+}
+
+.sct-card__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sct-card__category {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #243349;
+  line-height: 1.3;
+}
+
+/* === MODAL / LIGHTBOX === */
+.sct-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sct-modal.sct-modal--open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sct-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity .30s ease;
+}
+
+.sct-modal--open .sct-modal__overlay {
+  opacity: 1;
+}
+
+.sct-modal__close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.80);
+  transition: opacity .32s cubic-bezier(.22,.61,.36,1) .06s,
+              transform .32s cubic-bezier(.22,.61,.36,1) .06s,
+              background .18s ease;
+  font-family: inherit;
+}
+
+.sct-modal--open .sct-modal__close {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sct-modal__close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.sct-modal__body {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  max-width: 100vw;
+  max-height: 100vh;
+  opacity: 0;
+  transform: scale(0.88) translateY(16px);
+  transition: opacity .36s cubic-bezier(.22,.61,.36,1) .04s,
+              transform .36s cubic-bezier(.22,.61,.36,1) .04s;
+}
+
+.sct-modal--open .sct-modal__body {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.sct-modal__img {
+  display: block;
+  max-width: min(90vw, 720px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 40px 100px rgba(0, 0, 20, 0.60);
+  object-fit: contain;
+}
+
+/* === RESPONSIVIDADE === */
+@media (min-width: 768px) {
+  .sct-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sct-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .sct-grid {
+    gap: 14px;
+  }
+
+  .sct-card__info {
+    padding: 12px 14px;
+  }
+
+  .sct-card__category {
+    font-size: 9px;
+  }
+
+  .sct-modal__img {
+    max-width: 93vw;
+    border-radius: 10px;
+  }
+
+  .sct-modal__close {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  .sct-modal__overlay,
+  .sct-modal__close,
+  .sct-modal__body,
+  .js-motion .sct-card,
+  .sct-card__img,
+  .sct-card__expand {
+    transition: none !important;
+    animation: none !important;
+  }
+}
