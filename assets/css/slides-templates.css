@@ -1,0 +1,233 @@
+/* ============================================================
+   INOVA ANÁPOLIS — Templates de Apresentação
+   Estilos isolados · seção 10
+   Prefixo de escopo: slt-
+   ============================================================ */
+
+/* === GRID === */
+.slt-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+@media (min-width: 768px) {
+  .slt-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .slt-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* === CARD === */
+.slt-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-2xl);
+  overflow: hidden;
+}
+
+.js-motion .slt-card {
+  transition: transform .3s cubic-bezier(.22,.61,.36,1),
+              box-shadow .3s ease,
+              border-color .3s ease;
+}
+
+.js-motion .slt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(74, 0, 114, 0.28);
+}
+
+/* === CAPA === */
+.slt-card__cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, var(--c-navy) 0%, var(--c-violet) 100%);
+  background-color: var(--slt-color, var(--c-navy));
+  overflow: hidden;
+}
+
+/* Textura de pontos — placeholder visual enquanto a imagem não existe */
+.slt-card__cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1.2px, transparent 1.3px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.slt-card__cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.js-motion .slt-card:hover .slt-card__cover-img {
+  transform: scale(1.03);
+}
+
+/* === CORPO DO CARD === */
+.slt-card__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slt-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  line-height: 1.25;
+}
+
+.slt-card__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #66748C;
+  margin: 0;
+}
+
+/* Botão de ação */
+.slt-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--c-white);
+  background: var(--c-navy);
+  border: none;
+  border-radius: var(--r-md);
+  padding: 11px 20px;
+  cursor: pointer;
+  transition: background .15s ease, transform .1s ease;
+}
+
+.slt-card__btn:hover {
+  background: var(--c-navy-deep);
+}
+
+.slt-card__btn:active {
+  transform: translateY(1px);
+}
+
+.slt-card__btn svg {
+  flex-shrink: 0;
+  transition: transform .18s ease;
+}
+
+.slt-card__btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* === MODAL FULLSCREEN === */
+.slt-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 950;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.slt-modal.slt-modal--open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Overlay */
+.slt-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.94);
+  opacity: 0;
+  transition: opacity .28s ease;
+}
+
+.slt-modal--open .slt-modal__overlay {
+  opacity: 1;
+}
+
+/* Botão fechar */
+.slt-modal__close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1.5px solid rgba(255, 255, 255, 0.20);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.80);
+  transition: opacity .30s cubic-bezier(.22,.61,.36,1) .08s,
+              transform .30s cubic-bezier(.22,.61,.36,1) .08s,
+              background .18s ease;
+  font-family: inherit;
+}
+
+.slt-modal--open .slt-modal__close {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slt-modal__close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Contêiner do iframe — preenche tudo */
+.slt-modal__frame-wrap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .34s cubic-bezier(.22,.61,.36,1) .06s;
+}
+
+.slt-modal--open .slt-modal__frame-wrap {
+  opacity: 1;
+}
+
+/* iframe — sem sandbox, acesso total para a aplicação de slides */
+.slt-modal__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: transparent;
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  .slt-modal__overlay,
+  .slt-modal__close,
+  .slt-modal__frame-wrap,
+  .js-motion .slt-card,
+  .slt-card__cover-img,
+  .slt-card__btn,
+  .slt-card__btn svg {
+    transition: none !important;
+    animation: none !important;
+  }
+}

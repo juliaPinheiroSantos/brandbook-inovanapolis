@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/social-templates.css">
+  <link rel="stylesheet" href="assets/css/slides-templates.css">
   <script src="./support.js"></script>
   <script>
     if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -844,6 +845,36 @@
   </div>
 </section>
 
+<!-- ================= SLIDES TEMPLATES ================= -->
+<section id="apresentacoes" class="section-light">
+  <div class="section-inner">
+    <div class="mono-label">10 — Templates de Apresentação</div>
+    <h2 class="section-title">Templates de Apresentação</h2>
+    <p class="section-lead">Apresentações institucionais do ecossistema, prontas para uso em eventos, reuniões e relatórios.</p>
+
+    <div class="slt-grid">
+
+      <!-- Card 01 — adicione mais cards seguindo este padrão -->
+      <div class="slt-card" data-reveal style="--reveal-delay:0ms">
+        <!-- Capa: substitua cover.png por um print da primeira tela da apresentação -->
+        <div class="slt-card__cover" style="--slt-color:#001A2E;">
+          <img class="slt-card__cover-img" src="assets/slides/apresentacao/cover.png" alt="Capa da apresentação InovAnápolis" loading="lazy">
+        </div>
+        <div class="slt-card__body">
+          <div class="slt-card__title">InovAnápolis 2025–2030</div>
+          <p class="slt-card__desc">Plano estratégico do ecossistema de inovação: visão, indicadores e iniciativas prioritárias para Anápolis.</p>
+          <!-- data-slide-src: caminho para o index.html da apresentação -->
+          <button class="slt-card__btn" data-slide-src="assets/slides/apresentacao/index.html" onclick="window.sltOpen && window.sltOpen(this.getAttribute('data-slide-src'))">
+            Visualizar apresentação
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer__inner">
@@ -899,5 +930,29 @@ class Component extends DCLogic {
 </div>
 
 <script src="assets/js/social-templates.js" defer></script>
+
+<!-- ================= MODAL IFRAME · APRESENTAÇÕES ================= -->
+<div id="slt-modal" class="slt-modal" role="dialog" aria-modal="true" aria-label="Apresentação">
+  <div id="slt-modal-overlay" class="slt-modal__overlay"></div>
+  <button id="slt-modal-close" class="slt-modal__close" aria-label="Fechar apresentação">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="slt-modal__frame-wrap">
+    <!--
+      iframe sem sandbox: a apresentação precisa de acesso total a
+      scripts, Blob URLs, createObjectURL, DecompressionStream, etc.
+    -->
+    <iframe
+      id="slt-modal-iframe"
+      class="slt-modal__iframe"
+      src="about:blank"
+      title="Apresentação InovAnápolis"
+      allowfullscreen
+      allow="fullscreen"
+    ></iframe>
+  </div>
+</div>
+
+<script src="assets/js/slides-templates.js" defer></script>
 </body>
 </html>
